@@ -1,9 +1,13 @@
-﻿using System;
+﻿using AccessControlProject.WPF.ViewModels.WindowViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace AccessControlProject.WPF.ViewModels
 {
     public class ViewModelLocator
     {
-        private static IServiceProvider _serviceProvider = App.Host.Services;
+        private static readonly IServiceProvider ServiceProvider = App.Host.Services;
+        public MainWindowViewModel MainWindowVm => ServiceProvider.GetRequiredService<MainWindowViewModel>();
+        public AuthorizationWindowViewModel AuthorizationWindowVm => ServiceProvider.GetRequiredService<AuthorizationWindowViewModel>();
     }
 }

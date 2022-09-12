@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AccessControlProject.WPF.Infrastructure.Di;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
@@ -32,8 +33,7 @@ namespace AccessControlProject.WPF
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            //services.RegisterServices()
-            //    .RegisterViewModels()
+            services.RegisterViewModels();
         }
 
         public static string CurrentDirectory => Environment.CurrentDirectory;
