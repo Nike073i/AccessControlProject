@@ -1,17 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Windows;
 
 namespace AccessControlProject.WPF
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App
     {
+        public static bool IsDesignMode { get; private set; } = true;
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            IsDesignMode = false;
+
+            var host = Host;
+
+            base.OnStartup(e);
+            await host.StartAsync();
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            using var host = Host;
+            base.OnExit(e);
+            await host.StopAsync();
+        }
+
+        private static IHost? _host;
+
+        public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+
+        public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
+        {
+            //services.RegisterServices()
+            //    .RegisterViewModels()
+        }
+
+        public static string CurrentDirectory => Environment.CurrentDirectory;
     }
 }
