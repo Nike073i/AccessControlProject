@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{Binding AuthorizationWindowVm, Source={StaticResource Locator}}"
-        Title="{Binding Title}" Height="450" Width="800">
-    <Grid>
-        
+        Title="{Binding Title}" Height="300" Width="450">
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+            <TextBlock Text="Вход" FontWeight="Bold"  HorizontalAlignment="Center" Margin="5"/>
+            <Rectangle Height="2" RadiusX="2" RadiusY="2" Margin="5" Fill="#FF3B73FB"/>
+            <TextBlock Text="Логин:" Margin="5"/>
+            <TextBox Text ="{Binding Path=Login}" Margin="5"/>
+            <TextBlock Text="Пароль:" Margin="5"/>
+            <PasswordBox Name="PasswordBoxField" Margin="5"/>
+            <Button Content="Войти" Command="{Binding Path=LoginCommand}"  CommandParameter="{Binding ElementName=PasswordBoxField}"/>
+        </StackPanel>
     </Grid>
 </Window>
