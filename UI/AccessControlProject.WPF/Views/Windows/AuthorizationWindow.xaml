@@ -13,8 +13,8 @@
             <TextBlock Text="Логин:" Margin="5"/>
             <TextBox Text ="{Binding Path=Login}" Margin="5"/>
             <TextBlock Text="Пароль:" Margin="5"/>
-            <PasswordBox Name="PasswordBoxField" Margin="5"/>
-            <Button Content="Войти" Command="{Binding Path=LoginCommand}"  CommandParameter="{Binding ElementName=PasswordBoxField}"/>
+            <PasswordBoxWatcher Password="{Binding Password}" Margin="5"/>
+            <Button Content="Войти" Command="{Binding Path=LoginCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

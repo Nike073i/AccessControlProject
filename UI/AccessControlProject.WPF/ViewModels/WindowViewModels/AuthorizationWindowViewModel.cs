@@ -10,7 +10,7 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
     {
         #region Title : string - Название окна
 
-        private string _title = "Окно авторизации";
+        private string _title = "Авторизация";
 
         public string Title
         {
@@ -34,6 +34,20 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 
         #endregion
 
+        #region Password : string - Пароль пользователя
+
+        /// <summary>Пароль пользователя</summary>
+        private string _password = string.Empty;
+
+        /// <summary>Пароль пользователя</summary>
+        public string Password
+        {
+            get => _password;
+            set => Set(ref _password!, value);
+        }
+
+        #endregion
+
         #region Command : LoginCommand - Команда авторизации в системе
 
         /// <summary>Команда авторизации в системе</summary>
@@ -44,14 +58,12 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
             ??= new LambdaCommand(OnLoginCommandExecuted, CanLoginCommandExecute);
 
         /// <summary>Проверка возможности выполнения - Команда авторизации в системе</summary>
-        private bool CanLoginCommandExecute(object? parameter) => Login.IsNotNullOrEmpty() && parameter is not null;
+        private bool CanLoginCommandExecute(object? parameter) => Login.IsNotNullOrEmpty() && Password.IsNotNullOrEmpty();
 
         /// <summary>Логика выполнения - Команда авторизации в системе</summary>
         private void OnLoginCommandExecuted(object? parameter)
         {
-            if (parameter is not PasswordBox passwordBox) return;
-            var password = passwordBox.Password;
-            // Продолжение логики авторизации
+            // Логика авторизации
         }
 
         #endregion
