@@ -4,8 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        DataContext="{Binding MainWindowVm, Source={StaticResource Locator}}"
+        Title="{Binding Title}" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе" Command="{Binding AboutCommand}"/>
+            </MenuItem>
+            <MenuItem Header="Выход" Command="{Binding LogoutCommand}"/>
+        </Menu>
+        <Grid>
+            <ContentControl Content="{Binding CurrentModel}"/>
+        </Grid>
+    </DockPanel>
 </Window>
