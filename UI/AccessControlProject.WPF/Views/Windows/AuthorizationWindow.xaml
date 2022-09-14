@@ -2,19 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:wvm="clr-namespace:AccessControlProject.WPF.ViewModels.WindowViewModels"
         mc:Ignorable="d"
-        DataContext="{Binding AuthorizationWindowVm, Source={StaticResource Locator}}"
+        d:DataContext="{d:DesignInstance Type=wvm:AuthorizationWindowViewModel}"
         Title="{Binding Title}" Height="300" Width="450">
+    <Window.DataContext>
+        <wvm:AuthorizationWindowViewModel/>
+    </Window.DataContext>
     <Grid Background="White">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
             <TextBlock Text="Вход" FontWeight="Bold"  HorizontalAlignment="Center" Margin="5"/>
             <Rectangle Height="2" RadiusX="2" RadiusY="2" Margin="5" Fill="#FF3B73FB"/>
             <TextBlock Text="Логин:" Margin="5"/>
-            <TextBox Text ="{Binding Path=Login}" Margin="5"/>
+            <TextBox Text ="{Binding Login}" Margin="5"/>
             <TextBlock Text="Пароль:" Margin="5"/>
             <PasswordBoxWatcher Password="{Binding Password}" Margin="5"/>
-            <Button Content="Войти" Command="{Binding Path=LoginCommand}"/>
+            <Button Content="Войти" Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

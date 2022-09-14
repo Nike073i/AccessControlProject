@@ -1,7 +1,6 @@
 ﻿using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
 using System;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace AccessControlProject.WPF.ViewModels.WindowViewModels

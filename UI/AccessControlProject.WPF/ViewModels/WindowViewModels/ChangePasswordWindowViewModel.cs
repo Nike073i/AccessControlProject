@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 {
-    public class ChangePasswordViewModel : ViewModel
+    public class ChangePasswordWindowViewModel : ViewModel
     {
         #region Title : string - Название окна
 
