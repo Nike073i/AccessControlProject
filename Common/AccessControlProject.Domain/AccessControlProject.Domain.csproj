@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessControlProject.Enums\AccesControlProject.Enums.csproj" />
-    <ProjectReference Include="..\AccessControlProject.Interfaces\AccesControlProject.Interfaces.csproj" />
+    <ProjectReference Include="..\AccessControlProject.Enums\AccessControlProject.Enums.csproj" />
+    <ProjectReference Include="..\AccessControlProject.Interfaces\AccessControlProject.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

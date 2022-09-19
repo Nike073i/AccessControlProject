@@ -17,11 +17,11 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\AccessControlProject.Domain\AccesControlProject.Domain.csproj" />
+	  <ProjectReference Include="..\..\Common\AccessControlProject.Domain\AccessControlProject.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Infrastructure\Resources\Templates\" />
+	<ItemGroup>
+	  <Folder Include="Infrastructure\Resources\Templates\" />
   </ItemGroup>
 
 </Project>
