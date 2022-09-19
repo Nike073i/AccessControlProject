@@ -8,5 +8,8 @@ namespace AccessControlProject.WPF.ViewModels
     {
         private static readonly IServiceProvider ServiceProvider = App.Host.Services;
         public MainWindowViewModel MainWindowVm => ServiceProvider.GetRequiredService<MainWindowViewModel>();
+        public ChangePasswordWindowViewModel ChangePasswordWindowVm => ServiceProvider.GetRequiredService<ChangePasswordWindowViewModel>();
+        public FileDecryptionWindowViewModel FileDecryptionWindowVm => ServiceProvider.GetRequiredService<FileDecryptionWindowViewModel>();
+        public AuthorizationWindowViewModel AuthWindowVm => ServiceProvider.GetRequiredService<AuthorizationWindowViewModel>();
     }
 }

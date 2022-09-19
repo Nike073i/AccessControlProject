@@ -3,14 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wvm="clr-namespace:AccessControlProject.WPF.ViewModels.WindowViewModels"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=wvm:FileDecryptionWindowViewModel}"
+        DataContext ="{Binding AuthWindowVm, Source={StaticResource Locator}}"
         Title="{Binding Title}"
         Style="{StaticResource DialogWindowStyle}">
-    <Window.DataContext>
-        <wvm:FileDecryptionWindowViewModel/>
-    </Window.DataContext>
     <Grid Background="White">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350"  Margin="50">
             <TextBlock Text="{Binding Caption}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="5"/>
