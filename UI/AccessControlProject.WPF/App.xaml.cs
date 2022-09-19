@@ -1,4 +1,5 @@
-﻿using AccessControlProject.WPF.Infrastructure.Di;
+﻿using AccessControlProject.Domain.Di;
+using AccessControlProject.WPF.Infrastructure.Di;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -33,6 +34,7 @@ namespace AccessControlProject.WPF
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
+            services.RegisterDomainService();
             services.RegisterViewModels();
         }
 
