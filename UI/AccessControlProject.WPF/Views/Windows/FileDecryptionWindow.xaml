@@ -1,0 +1,23 @@
+﻿<Window x:Class="AccessControlProject.WPF.Views.Windows.FileDecryptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wvm="clr-namespace:AccessControlProject.WPF.ViewModels.WindowViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=wvm:FileDecryptionWindowViewModel}"
+        Title="{Binding Title}"
+        Style="{StaticResource DialogWindowStyle}">
+    <Window.DataContext>
+        <wvm:FileDecryptionWindowViewModel/>
+    </Window.DataContext>
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350"  Margin="50">
+            <TextBlock Text="{Binding Caption}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="5"/>
+            <Rectangle Height="2" RadiusX="2" RadiusY="2" Margin="5" Fill="#FF3B73FB"/>
+            <TextBlock Text="Парольная фраза:" Margin="5"/>
+            <PasswordBoxWatcher Password ="{Binding Key}" Margin="5"/>
+            <Button Content="Расшифровать" Command="{Binding DecryptCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
