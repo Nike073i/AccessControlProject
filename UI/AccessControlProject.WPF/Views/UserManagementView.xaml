@@ -30,10 +30,10 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="0" Grid.Row="0" fa:Awesome.Content="Solid_Plus" Foreground="Green"  Margin="3"/>
-                            <Button Grid.Column="1" Grid.Row="0" fa:Awesome.Content="Solid_Ban" Foreground="Red" Margin="3"/>
-                            <Button Grid.Column="0" Grid.Row="1" fa:Awesome.Content="Solid_ShieldAlt" Foreground="DarkBlue" Margin="3"/>
-                            <Button Grid.Column="1" Grid.Row="1" fa:Awesome.Content="Solid_Retweet" Foreground="Yellow"  Margin="3"/>
+                            <Button Grid.Column="0" Grid.Row="0" fa:Awesome.Content="Solid_Plus" Foreground="Green"  Margin="3" Command="{Binding AddPersonCommand}"/>
+                            <Button Grid.Column="1" Grid.Row="0" fa:Awesome.Content="Solid_Ban" Foreground="Red" Margin="3" Command="{Binding BlockPersonCommand}" CommandParameter="{Binding SelectedPerson}"/>
+                            <Button Grid.Column="0" Grid.Row="1" fa:Awesome.Content="Solid_ShieldAlt" Foreground="DarkBlue" Margin="3" Command="{Binding RestrictPersonCommand}" CommandParameter="{Binding SelectedPerson}"/>
+                            <Button Grid.Column="1" Grid.Row="1" fa:Awesome.Content="Solid_Retweet" Foreground="Yellow"  Margin="3" Command="{Binding LoadPersonsCommand}"/>
                         </Grid>
                         <ListBox ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}">
 
@@ -72,13 +72,13 @@
             </TabItem.LayoutTransform>
             <DockPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-                    <Button Margin="3">
+                    <Button Margin="3" Command="{Binding AddPersonCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:ImageAwesome Icon="Solid_Plus" Foreground="Green" Margin="5"/>
                             <TextBlock Text="Создать" VerticalAlignment="Center" Margin="5"/>
                         </StackPanel>
                     </Button>
-                    <Button Margin="3">
+                    <Button Margin="3" Command="{Binding LoadPersonsCommand}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Обновить список" VerticalAlignment="Center" Margin="5"/>
                             <fa:ImageAwesome Icon="Solid_Retweet" Foreground="Yellow" Margin="5"/>
@@ -86,13 +86,13 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Margin="3">
+                    <Button Margin="3" Command="{Binding SetPrevPersonCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:ImageAwesome Icon="Solid_Backward" Foreground="White" Margin="5"/>
                             <TextBlock Text="Предыдущий" VerticalAlignment="Center" Margin="5"/>
                         </StackPanel>
                     </Button>
-                    <Button Margin="3">
+                    <Button Margin="3" Command="{Binding SetNextPersonCommand}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Следующий" VerticalAlignment="Center" Margin="5"/>
                             <fa:ImageAwesome Icon="Solid_Forward" Foreground="White" Margin="5"/>
@@ -128,13 +128,13 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Margin="3" Grid.Column="0">
+                        <Button Margin="3" Grid.Column="0" Command="{Binding BlockPersonCommand}" CommandParameter="{Binding SelectedPerson}">
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="Solid_Ban" Foreground="Red" Margin="5"/>
                                 <TextBlock Text="Блокировка" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>
                         </Button>
-                        <Button Margin="3" Grid.Column="1">
+                        <Button Margin="3" Grid.Column="1" Command="{Binding RestrictPersonCommand}" CommandParameter="{Binding SelectedPerson}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Ограничение" VerticalAlignment="Center" Margin="5"/>
                                 <fa:ImageAwesome Icon="Solid_ShieldAlt" Foreground="DarkBlue" Margin="5"/>

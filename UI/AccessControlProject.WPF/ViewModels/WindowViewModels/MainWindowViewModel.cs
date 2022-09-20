@@ -42,6 +42,20 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 
         #endregion
 
+        #region IsAdmin : bool - Флаг администратора
+
+        /// <summary>Флаг администратора</summary>
+        private bool _isAdmin;
+
+        /// <summary>Флаг администратора</summary>
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            private set => Set(ref _isAdmin, value);
+        }
+
+        #endregion
+
         #region Command AboutCommand - Команда запроса описания программы
 
         /// <summary>Команда запроса описания программы</summary>
