@@ -8,6 +8,7 @@ namespace AccessControlProject.WPF.Infrastructure.Di
     {
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
+            services.AddTransient<UserManagementViewModel>();
             services.AddTransient<MainWindowViewModel>();
             services.AddTransient<ChangePasswordWindowViewModel>();
             services.AddTransient<AuthorizationWindowViewModel>();

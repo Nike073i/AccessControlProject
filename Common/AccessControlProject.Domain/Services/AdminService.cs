@@ -6,22 +6,22 @@ namespace AccessControlProject.Domain.Services
 {
     public class AdminService : PersonService, IAdminService
     {
-        public IEnumerable<IPersonDto> GetUsers()
+        public Task<IEnumerable<IPersonDto>> GetUsersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public bool AddUser(string login, string password = "")
+        public Task<bool> AddUserAsync(string login, string password = "")
         {
             throw new NotImplementedException();
         }
 
-        public bool SetBlockUser(string login, bool isBlocked)
+        public Task<bool> SetBlockUserAsync(string login, bool isBlocked)
         {
             throw new NotImplementedException();
         }
 
-        public bool SetPasswordLimit(string login, bool isLimited)
+        public Task<bool> SetPasswordLimitAsync(string login, bool isLimited)
         {
             throw new NotImplementedException();
         }

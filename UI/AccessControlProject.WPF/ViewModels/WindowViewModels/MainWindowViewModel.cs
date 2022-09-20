@@ -10,10 +10,12 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
     public class MainWindowViewModel : ViewModel
     {
         private readonly IDialogService _dialogService;
+        private readonly UserManagementViewModel _userManagementVm;
 
-        public MainWindowViewModel(IDialogService dialogService)
+        public MainWindowViewModel(IDialogService dialogService, UserManagementViewModel userManagementVm)
         {
             _dialogService = dialogService;
+            _userManagementVm = userManagementVm;
         }
 
         #region Title : string - Название окна
@@ -73,6 +75,26 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
         private void OnLogoutCommandExecuted()
         {
             // Логика выхода
+        }
+
+        #endregion
+
+        #region Command ShowAdminViewCommand - Команда вызова админской панели
+
+        /// <summary>Команда вызова админской панели</summary>
+        private ICommand? _showAdminViewCommand;
+
+        /// <summary>Команда вызова админской панели</summary>
+        public ICommand ShowAdminViewCommand => _showAdminViewCommand
+            ??= new LambdaCommand(OnShowAdminViewCommandExecuted, CanShowAdminViewCommandExecute);
+
+        /// <summary>Проверка возможности выполнения - Команда вызова админской панели</summary>
+        private bool CanShowAdminViewCommandExecute() => true;
+
+        /// <summary>Логика выполнения - Команда вызова админской панели</summary>
+        private void OnShowAdminViewCommandExecuted()
+        {
+            CurrentModel = _userManagementVm;
         }
 
         #endregion

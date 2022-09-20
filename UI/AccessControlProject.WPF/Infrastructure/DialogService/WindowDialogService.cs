@@ -25,5 +25,6 @@ namespace AccessControlProject.WPF.Infrastructure.DialogService
                        exclamation ? MessageBoxImage.Exclamation : MessageBoxImage.Question)
                    == MessageBoxResult.Yes;
         }
+        
     }
 }

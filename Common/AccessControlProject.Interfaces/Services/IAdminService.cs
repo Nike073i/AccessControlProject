@@ -4,9 +4,9 @@ namespace AccessControlProject.Interfaces.Services
 {
     public interface IAdminService : IPersonService
     {
-        IEnumerable<IPersonDto> GetUsers();
-        bool AddUser(string login, string password = "");
-        bool SetBlockUser(string login, bool isBlocked);
-        bool SetPasswordLimit(string login, bool isLimited);
+        Task<IEnumerable<IPersonDto>> GetUsersAsync();
+        Task<bool> AddUserAsync(string login, string password = "");
+        Task<bool> SetBlockUserAsync(string login, bool isBlocked);
+        Task<bool> SetPasswordLimitAsync(string login, bool isLimited);
     }
 }
