@@ -1,4 +1,6 @@
-﻿using MathCore.WPF.Commands;
+﻿using AccessControlProject.Interfaces.Services.Base;
+using AccessControlProject.WPF.Infrastructure.DialogService;
+using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
 using System;
 using System.Windows.Input;
@@ -7,6 +9,15 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 {
     public class ChangePasswordWindowViewModel : ViewModel
     {
+        private readonly IPersonService _personService;
+        private readonly IDialogService _dialogService;
+
+        public ChangePasswordWindowViewModel(IPersonService personService, IDialogService dialogService)
+        {
+            _personService = personService;
+            _dialogService = dialogService;
+        }
+
         #region Title : string - Название окна
 
         private string _title = "Смена пароля";

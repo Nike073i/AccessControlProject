@@ -1,4 +1,6 @@
-﻿using MathCore.WPF.Commands;
+﻿using AccessControlProject.Interfaces.Services;
+using AccessControlProject.WPF.Infrastructure.DialogService;
+using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
 using System;
 using System.Windows.Input;
@@ -7,6 +9,15 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 {
     public class AuthorizationWindowViewModel : ViewModel
     {
+        private readonly IAuthService _authService;
+        private readonly IDialogService _dialogService;
+
+        public AuthorizationWindowViewModel(IAuthService authService, IDialogService dialogService)
+        {
+            _authService = authService;
+            _dialogService = dialogService;
+        }
+
         #region Title : string - Название окна
 
         private string _title = "Авторизация";

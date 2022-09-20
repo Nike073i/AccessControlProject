@@ -8,6 +8,9 @@
         Title="{Binding Title}" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Управление">
+                <MenuItem Header="Смена пароля" Command="{Binding ShowChangePasswordWindowCommand}"/>
+            </MenuItem>
             <MenuItem Header="Справка">
                 <MenuItem Header="О программе" Command="{Binding AboutCommand}"/>
             </MenuItem>

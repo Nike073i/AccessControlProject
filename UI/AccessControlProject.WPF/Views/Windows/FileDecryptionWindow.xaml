@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        DataContext ="{Binding AuthWindowVm, Source={StaticResource Locator}}"
+        DataContext ="{Binding FileDecryptionWindowVm, Source={StaticResource Locator}}"
         Title="{Binding Title}"
         Style="{StaticResource DialogWindowStyle}">
     <Grid Background="White">

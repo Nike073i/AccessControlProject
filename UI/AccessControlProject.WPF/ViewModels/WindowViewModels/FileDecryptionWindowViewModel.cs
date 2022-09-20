@@ -1,4 +1,6 @@
-﻿using MathCore.WPF.Commands;
+﻿using AccessControlProject.Interfaces.Services;
+using AccessControlProject.WPF.Infrastructure.DialogService;
+using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
 using System;
 using System.Windows.Input;
@@ -7,6 +9,15 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 {
     public class FileDecryptionWindowViewModel : ViewModel
     {
+        private readonly IEncryptionService _encryptionService;
+        private readonly IDialogService _dialogService;
+
+        public FileDecryptionWindowViewModel(IEncryptionService encryptionService, IDialogService dialogService)
+        {
+            _encryptionService = encryptionService;
+            _dialogService = dialogService;
+        }
+
         #region Title : string - Заголовок окна
 
         /// <summary>Заголовок окна</summary>

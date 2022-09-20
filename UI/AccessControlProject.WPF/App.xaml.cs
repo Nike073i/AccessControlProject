@@ -35,6 +35,7 @@ namespace AccessControlProject.WPF
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.RegisterDomainService();
+            services.RegisterUiServices();
             services.RegisterViewModels();
         }
 
