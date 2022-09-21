@@ -10,7 +10,7 @@ namespace AccessControlProject.Domain.Di
     {
         public static IServiceCollection RegisterDomainService(this IServiceCollection services)
         {
-            services.AddTransient<IEncryptionService, FileEncryptionService>();
+            services.AddTransient<IEncryptionService, DesEncryptionService>();
             services.AddTransient<IAuthService, FileAuthService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IPersonService, PersonService>();
