@@ -8,6 +8,7 @@ namespace AccessControlProject.Domain.Services
     {
         public bool EncryptFile(string fileInPath, string fileOutPath, string key)
         {
+            if (!File.Exists(fileInPath)) return false;
             var bytesFromKey = Encoding.ASCII.GetBytes(key);
             if (bytesFromKey.Length != 8) return false;
             try
@@ -33,6 +34,7 @@ namespace AccessControlProject.Domain.Services
 
         public bool DecryptFile(string fileInPath, string fileOutPath, string key)
         {
+            if (!File.Exists(fileInPath)) return false;
             var bytesFromKey = Encoding.ASCII.GetBytes(key);
             if (bytesFromKey.Length != 8) return false;
             try

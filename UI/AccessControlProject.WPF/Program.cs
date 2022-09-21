@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace AccessControlProject.WPF
 {
@@ -17,6 +18,9 @@ namespace AccessControlProject.WPF
         {
             return Host.CreateDefaultBuilder(Args)
                 .UseContentRoot(App.CurrentDirectory)
+                .ConfigureAppConfiguration((host, cfg) =>
+                    cfg.SetBasePath(App.CurrentDirectory)
+                        .AddJsonFile("appsettings.json", true, true))
                 .ConfigureServices(App.ConfigureServices);
         }
     }

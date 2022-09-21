@@ -2,6 +2,7 @@
 using AccessControlProject.WPF.Infrastructure.DialogService;
 using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Windows.Input;
 
@@ -9,13 +10,17 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
 {
     public class FileDecryptionWindowViewModel : ViewModel
     {
+        private readonly string _filePath;
+        private readonly string _filePathTmp;
         private readonly IEncryptionService _encryptionService;
         private readonly IDialogService _dialogService;
 
-        public FileDecryptionWindowViewModel(IEncryptionService encryptionService, IDialogService dialogService)
+        public FileDecryptionWindowViewModel(IEncryptionService encryptionService, IDialogService dialogService, IConfiguration configuration)
         {
             _encryptionService = encryptionService;
             _dialogService = dialogService;
+            _filePath = configuration["Persons:FilePath"];
+            _filePathTmp = configuration["Persons:FilePathTmp"];
         }
 
         #region Title : string - Заголовок окна
@@ -75,7 +80,12 @@ namespace AccessControlProject.WPF.ViewModels.WindowViewModels
         /// <summary>Логика выполнения - Команда расшифровки файла</summary>
         private void OnDecryptCommandExecuted()
         {
-            // Логика расшифровки файла     
+            // Логика расшифровки файла
+            // Тестовый код
+            //_encryptionService.DecryptFile("test_out.txt", "road_map_out.txt", "qwerty12");
+            //_encryptionService.EncryptFile(@"road_map.txt", "test_out.txt", "qwerty12");
+            _encryptionService.EncryptFile(_filePath, _filePathTmp, "qwerty12");
+            //_encryptionService.EncryptFile("qwerty12");
         }
 
         #endregion
