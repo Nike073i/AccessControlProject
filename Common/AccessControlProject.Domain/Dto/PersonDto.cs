@@ -1,23 +1,19 @@
 ﻿using AccessControlProject.Interfaces;
+using Newtonsoft.Json;
 
 namespace AccessControlProject.Domain.Dto
 {
     public class PersonDto : IPersonDto
     {
-        public bool IsAdmin { get; }
-        public string Login { get; }
-        public string Password { get; }
-        public bool IsBlocked { get; }
-        public bool IsLimited { get; }
+        [JsonProperty(Required = Required.Always)]
+        public string Login { get; set; } = string.Empty;
+        [JsonProperty(Required = Required.Always)]
+        public string Password { get; set; } = string.Empty;
+        [JsonProperty(Required = Required.Always)]
+        public bool IsBlocked { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool IsLimited { get; set; }
 
-
-        public PersonDto(string login, string password, bool isBlocked, bool isLimited)
-        {
-            Login = login;
-            IsAdmin = login.Equals("ADMIN");
-            Password = password;
-            IsBlocked = isBlocked;
-            IsLimited = isLimited;
-        }
+        public bool IsAdmin() => Login.Equals("ADMIN");
     }
 }
