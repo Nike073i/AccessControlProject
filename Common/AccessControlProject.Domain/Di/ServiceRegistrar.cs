@@ -12,7 +12,7 @@ namespace AccessControlProject.Domain.Di
         {
             services.AddTransient<IEncryptionService, DesEncryptionService>();
             services.AddTransient<IDataService, FileDataService>();
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<ISecurityService, SecurityService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IPersonService, PersonService>();
             return services;

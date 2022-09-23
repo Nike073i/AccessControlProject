@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System;
-using Microsoft.Extensions.Configuration;
 
 namespace AccessControlProject.WPF
 {

@@ -7,7 +7,21 @@ namespace AccessControlProject.Domain.Services
 {
     public class FileDataService : IDataService
     {
-        public IEnumerable<IPersonDto>? Persons { get; private set; }
+        private List<PersonDto> _persons = new();
+        public IEnumerable<IPersonDto> Persons => _persons;
+
+        public bool UpdatePerson(IPersonDto person)
+        {
+            var indexPerson = _persons.FindIndex(p => p.Login.Equals(person.Login));
+            if (indexPerson == -1) return false;
+            _persons[indexPerson].Password = person.Password;
+            _persons[indexPerson].IsBlocked = person.IsBlocked;
+            _persons[indexPerson].IsLimited = person.IsLimited;
+
+            return true;
+        }
+
+        public IPersonDto? GetPersonByLogin(string login) => Persons.FirstOrDefault(p => p.Login.Equals(login));
 
         public async Task<bool> LoadPersonsAsync(string filePath)
         {
@@ -16,7 +30,8 @@ namespace AccessControlProject.Domain.Services
             try
             {
                 var json = await File.ReadAllTextAsync(filePath).ConfigureAwait(false);
-                Persons = JsonConvert.DeserializeObject<List<PersonDto>>(json);
+                var deserialize = JsonConvert.DeserializeObject<List<PersonDto>>(json);
+                _persons = deserialize ?? new List<PersonDto>();
             }
             catch (IOException ex)
             {
@@ -33,7 +48,7 @@ namespace AccessControlProject.Domain.Services
         public async Task<bool> SavePersonsAsync(string filePath)
         {
             if (string.IsNullOrEmpty(filePath)) return false;
-            if (Persons == null || !Persons.Any()) return false;
+            if (!Persons.Any()) return false;
             var json = JsonConvert.SerializeObject(Persons);
             await using var tw = new StreamWriter(filePath);
             await tw.WriteLineAsync(json);

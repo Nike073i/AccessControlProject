@@ -1,22 +1,16 @@
 ﻿using AccessControlProject.Domain.Services.Base;
-using AccessControlProject.Interfaces;
 using AccessControlProject.Interfaces.Services;
 
 namespace AccessControlProject.Domain.Services
 {
     public class AdminService : PersonService, IAdminService
     {
-        public Task<IEnumerable<IPersonDto>> GetUsersAsync()
+        public Task<bool> AddPersonAsync(string login, string password = "")
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> AddUserAsync(string login, string password = "")
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> SetBlockUserAsync(string login, bool isBlocked)
+        public Task<bool> SetBlockPersonAsync(string login, bool isBlocked)
         {
             throw new NotImplementedException();
         }
