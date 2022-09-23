@@ -1,5 +1,4 @@
-﻿using AccessControlProject.Domain.Dto;
-using AccessControlProject.Interfaces;
+﻿using AccessControlProject.Dto;
 using AccessControlProject.Interfaces.Services;
 using System.Security.Cryptography;
 using System.Text;
@@ -19,18 +18,15 @@ namespace AccessControlProject.Domain.Services
         {
             var authPerson = Authentication(login, currentPassword);
             if (authPerson == null) return false;
-            var dto = new PersonDto()
+            var dto = new PersonDto(ref authPerson)
             {
-                Login = authPerson.Login,
                 Password = newPassword,
-                IsLimited = authPerson.IsLimited,
-                IsBlocked = authPerson.IsBlocked
             };
             _dataService.UpdatePerson(dto);
             return true;
         }
 
-        public IPersonDto? Authentication(string login, string password)
+        public PersonDto? Authentication(string login, string password)
         {
             if (string.IsNullOrEmpty(login) ||
                 string.IsNullOrEmpty(password)) return null;

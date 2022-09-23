@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.Interfaces.Services
+﻿using AccessControlProject.Dto;
+
+namespace AccessControlProject.Interfaces.Services
 {
     public interface ISecurityService
     {
-        IPersonDto? Authentication(string login, string password);
+        PersonDto? Authentication(string login, string password);
     }
 }

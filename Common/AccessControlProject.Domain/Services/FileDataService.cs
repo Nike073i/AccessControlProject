@@ -1,5 +1,4 @@
-﻿using AccessControlProject.Domain.Dto;
-using AccessControlProject.Interfaces;
+﻿using AccessControlProject.Dto;
 using AccessControlProject.Interfaces.Services;
 using Newtonsoft.Json;
 
@@ -8,20 +7,22 @@ namespace AccessControlProject.Domain.Services
     public class FileDataService : IDataService
     {
         private List<PersonDto> _persons = new();
-        public IEnumerable<IPersonDto> Persons => _persons;
+        public IEnumerable<PersonDto> Persons => _persons.Select(p => new PersonDto(ref p));
 
-        public bool UpdatePerson(IPersonDto person)
+        public bool UpdatePerson(PersonDto person)
         {
             var indexPerson = _persons.FindIndex(p => p.Login.Equals(person.Login));
             if (indexPerson == -1) return false;
-            _persons[indexPerson].Password = person.Password;
-            _persons[indexPerson].IsBlocked = person.IsBlocked;
-            _persons[indexPerson].IsLimited = person.IsLimited;
+            _persons[indexPerson] = new PersonDto(ref person);
 
             return true;
         }
 
-        public IPersonDto? GetPersonByLogin(string login) => Persons.FirstOrDefault(p => p.Login.Equals(login));
+        public PersonDto? GetPersonByLogin(string login)
+        {
+            var person = _persons.FirstOrDefault(p => p.Login.Equals(login));
+            return person != null ? new PersonDto(ref person) : null;
+        }
 
         public async Task<bool> LoadPersonsAsync(string filePath)
         {

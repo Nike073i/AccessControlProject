@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlProject.Enums"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlProject.Interfaces", "Common\AccessControlProject.Interfaces\AccessControlProject.Interfaces.csproj", "{C0F469A5-41E6-4ACC-A19B-E3A670F859F2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlProject.Dto", "Common\AccessControlProject.Dto\AccessControlProject.Dto.csproj", "{F86EEA96-730B-4D7D-AE1D-E9A601FFB23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C0F469A5-41E6-4ACC-A19B-E3A670F859F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0F469A5-41E6-4ACC-A19B-E3A670F859F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0F469A5-41E6-4ACC-A19B-E3A670F859F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86EEA96-730B-4D7D-AE1D-E9A601FFB23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86EEA96-730B-4D7D-AE1D-E9A601FFB23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86EEA96-730B-4D7D-AE1D-E9A601FFB23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86EEA96-730B-4D7D-AE1D-E9A601FFB23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

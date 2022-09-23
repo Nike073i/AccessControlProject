@@ -1,4 +1,4 @@
-﻿using AccessControlProject.Interfaces;
+﻿using AccessControlProject.Dto;
 using AccessControlProject.Interfaces.Services;
 using MathCore.WPF.Commands;
 using MathCore.WPF.ViewModels;
@@ -20,10 +20,10 @@ namespace AccessControlProject.WPF.ViewModels
         #region Persons : ObservableCollection<IPersonDto> - Список пользователей
 
         /// <summary>Список пользователей</summary>
-        private ObservableCollection<IPersonDto>? _persons;
+        private ObservableCollection<PersonDto>? _persons;
 
         /// <summary>Список пользователей</summary>
-        public ObservableCollection<IPersonDto>? Persons
+        public ObservableCollection<PersonDto>? Persons
         {
             get => _persons;
             set => Set(ref _persons, value);
@@ -34,10 +34,10 @@ namespace AccessControlProject.WPF.ViewModels
         #region SelectedPerson : IPersonDto - Выбранный пользователь
 
         /// <summary>Выбранный пользователь</summary>
-        private IPersonDto? _selectedPerson;
+        private PersonDto? _selectedPerson;
 
         /// <summary>Выбранный пользователь</summary>
-        public IPersonDto? SelectedPerson
+        public PersonDto? SelectedPerson
         {
             get => _selectedPerson;
             set => Set(ref _selectedPerson, value);
@@ -57,7 +57,7 @@ namespace AccessControlProject.WPF.ViewModels
         /// <summary>Логика выполнения - Команда загрузки данных пользователей</summary>
         private async Task OnLoadPersonsCommandExecuted()
         {
-            Persons = new ObservableCollection<IPersonDto>(await _adminService.GetUsersAsync());
+            //Persons = new ObservableCollection<IPersonDto>(await _adminService.GetPersonsAsync());
         }
 
         #endregion

@@ -1,10 +1,12 @@
-﻿namespace AccessControlProject.Interfaces.Services
+﻿using AccessControlProject.Dto;
+
+namespace AccessControlProject.Interfaces.Services
 {
     public interface IDataService
     {
-        IEnumerable<IPersonDto> Persons { get; }
-        public bool UpdatePerson(IPersonDto person);
-        public IPersonDto? GetPersonByLogin(string login);
+        IEnumerable<PersonDto> Persons { get; }
+        public bool UpdatePerson(PersonDto person);
+        public PersonDto? GetPersonByLogin(string login);
         Task<bool> LoadPersonsAsync(string path);
         Task<bool> SavePersonsAsync(string path);
     }
