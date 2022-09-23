@@ -11,7 +11,7 @@ namespace AccessControlProject.Domain.Services
 
         public bool UpdatePerson(PersonDto person)
         {
-            var indexPerson = _persons.FindIndex(p => p.Login.Equals(person.Login));
+            var indexPerson = _persons.IndexOf(person);
             if (indexPerson == -1) return false;
             _persons[indexPerson] = new PersonDto(ref person);
 

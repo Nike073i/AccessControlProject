@@ -5,9 +5,9 @@ namespace AccessControlProject.Dto
     public class PersonDto
     {
         [JsonProperty(Required = Required.Always)]
-        public string Login { get; set; } = string.Empty;
+        public string Login { get; set; }
         [JsonProperty(Required = Required.Always)]
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
         [JsonProperty(Required = Required.Always)]
         public bool IsBlocked { get; set; }
         [JsonProperty(Required = Required.Always)]
@@ -22,5 +22,11 @@ namespace AccessControlProject.Dto
             IsBlocked = other.IsBlocked;
             IsLimited = other.IsLimited;
         }
+
+        public override bool Equals(object? obj) => Equals(obj as PersonDto);
+
+        public override int GetHashCode() => Login.GetHashCode();
+
+        public bool Equals(PersonDto? other) => other != null && Login == other.Login;
     }
 }
