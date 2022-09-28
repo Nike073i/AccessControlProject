@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.WPF.Views
+﻿namespace AccessControlProject.WPF.Views;
+
+public partial class UserManagementView
 {
-    public partial class UserManagementView
+    public UserManagementView()
     {
-        public UserManagementView() => InitializeComponent();
+        InitializeComponent();
     }
 }

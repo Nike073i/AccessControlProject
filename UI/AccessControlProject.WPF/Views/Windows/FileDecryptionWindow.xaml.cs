@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.WPF.Views.Windows
+﻿namespace AccessControlProject.WPF.Views.Windows;
+
+public partial class FileDecryptionWindow
 {
-    public partial class FileDecryptionWindow
+    public FileDecryptionWindow()
     {
-        public FileDecryptionWindow() => InitializeComponent();
+        InitializeComponent();
     }
 }

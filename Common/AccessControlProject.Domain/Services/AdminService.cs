@@ -1,23 +1,35 @@
-﻿using AccessControlProject.Domain.Services.Base;
+﻿using AccessControlProject.Dto;
 using AccessControlProject.Interfaces.Services;
 
-namespace AccessControlProject.Domain.Services
+namespace AccessControlProject.Domain.Services;
+
+public class AdminService : IAdminService
 {
-    public class AdminService : PersonService, IAdminService
+    private readonly IDataService _dataService;
+
+    public AdminService(IDataService dataService)
     {
-        public Task<bool> AddPersonAsync(string login, string password = "")
-        {
-            throw new NotImplementedException();
-        }
+        _dataService = dataService;
+    }
 
-        public Task<bool> SetBlockPersonAsync(string login, bool isBlocked)
-        {
-            throw new NotImplementedException();
-        }
+    public PersonDto? AddPerson(string login, string password = "")
+    {
+        return _dataService.AddPerson(new PersonDto(login, password));
+    }
 
-        public Task<bool> SetPasswordLimitAsync(string login, bool isLimited)
-        {
-            throw new NotImplementedException();
-        }
+    public bool SetBlockPerson(string login, bool isBlocked)
+    {
+        var foundPerson = _dataService.GetPersonByLogin(login);
+        if (foundPerson == null) return false;
+        foundPerson.IsBlocked = isBlocked;
+        return _dataService.UpdatePerson(foundPerson);
+    }
+
+    public bool SetPasswordLimit(string login, bool isLimited)
+    {
+        var foundPerson = _dataService.GetPersonByLogin(login);
+        if (foundPerson == null) return false;
+        foundPerson.IsLimited = isLimited;
+        return _dataService.UpdatePerson(foundPerson);
     }
 }

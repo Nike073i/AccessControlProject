@@ -1,11 +1,10 @@
-﻿using AccessControlProject.Interfaces.Services.Base;
+﻿using AccessControlProject.Dto;
 
-namespace AccessControlProject.Interfaces.Services
+namespace AccessControlProject.Interfaces.Services;
+
+public interface IAdminService
 {
-    public interface IAdminService : IPersonService
-    {
-        Task<bool> AddPersonAsync(string login, string password = "");
-        Task<bool> SetBlockPersonAsync(string login, bool isBlocked);
-        Task<bool> SetPasswordLimitAsync(string login, bool isLimited);
-    }
+    PersonDto? AddPerson(string login, string password = "");
+    bool SetBlockPerson(string login, bool isBlocked);
+    bool SetPasswordLimit(string login, bool isLimited);
 }

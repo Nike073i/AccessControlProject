@@ -1,15 +1,20 @@
-﻿using AccessControlProject.WPF.ViewModels.WindowViewModels;
+﻿using System;
+using AccessControlProject.WPF.ViewModels.WindowViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
-namespace AccessControlProject.WPF.ViewModels
+namespace AccessControlProject.WPF.ViewModels;
+
+public class ViewModelLocator
 {
-    public class ViewModelLocator
-    {
-        private static readonly IServiceProvider ServiceProvider = App.Host.Services;
-        public MainWindowViewModel MainWindowVm => ServiceProvider.GetRequiredService<MainWindowViewModel>();
-        public ChangePasswordWindowViewModel ChangePasswordWindowVm => ServiceProvider.GetRequiredService<ChangePasswordWindowViewModel>();
-        public FileDecryptionWindowViewModel FileDecryptionWindowVm => ServiceProvider.GetRequiredService<FileDecryptionWindowViewModel>();
-        public AuthorizationWindowViewModel AuthWindowVm => ServiceProvider.GetRequiredService<AuthorizationWindowViewModel>();
-    }
+    private static readonly IServiceProvider ServiceProvider = App.Host.Services;
+    public MainWindowViewModel MainWindowVm => ServiceProvider.GetRequiredService<MainWindowViewModel>();
+
+    public ChangePasswordWindowViewModel ChangePasswordWindowVm =>
+        ServiceProvider.GetRequiredService<ChangePasswordWindowViewModel>();
+
+    public FileDecryptionWindowViewModel FileDecryptionWindowVm =>
+        ServiceProvider.GetRequiredService<FileDecryptionWindowViewModel>();
+
+    public AuthorizationWindowViewModel AuthWindowVm =>
+        ServiceProvider.GetRequiredService<AuthorizationWindowViewModel>();
 }

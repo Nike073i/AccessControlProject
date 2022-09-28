@@ -3,6 +3,6 @@
                     xmlns:vm="clr-namespace:AccessControlProject.WPF.ViewModels"
                     xmlns:views="clr-namespace:AccessControlProject.WPF.Views">
     <DataTemplate DataType="{x:Type vm:UserManagementViewModel}">
-        <views:UserManagementView DataContext="{Binding}"/>
+        <views:UserManagementView DataContext="{Binding}" />
     </DataTemplate>
 </ResourceDictionary>

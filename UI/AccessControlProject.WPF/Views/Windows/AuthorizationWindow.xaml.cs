@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.WPF.Views.Windows
+﻿namespace AccessControlProject.WPF.Views.Windows;
+
+public partial class AuthorizationWindow
 {
-    public partial class AuthorizationWindow
+    public AuthorizationWindow()
     {
-        public AuthorizationWindow() => InitializeComponent();
+        InitializeComponent();
     }
 }

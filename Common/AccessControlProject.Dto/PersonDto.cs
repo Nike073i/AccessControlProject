@@ -1,32 +1,41 @@
 ﻿using Newtonsoft.Json;
 
-namespace AccessControlProject.Dto
+namespace AccessControlProject.Dto;
+
+public class PersonDto
 {
-    public class PersonDto
+    public PersonDto()
     {
-        [JsonProperty(Required = Required.Always)]
-        public string Login { get; set; }
-        [JsonProperty(Required = Required.Always)]
-        public string Password { get; set; }
-        [JsonProperty(Required = Required.Always)]
-        public bool IsBlocked { get; set; }
-        [JsonProperty(Required = Required.Always)]
-        public bool IsLimited { get; set; }
+    }
 
-        public bool IsAdmin() => Login.Equals("ADMIN");
+    public PersonDto(string login, string password)
+    {
+        Login = login;
+        Password = password;
+    }
 
-        public PersonDto(ref PersonDto other)
-        {
-            Login = other.Login;
-            Password = other.Password;
-            IsBlocked = other.IsBlocked;
-            IsLimited = other.IsLimited;
-        }
+    public PersonDto(ref PersonDto other)
+    {
+        Login = other.Login;
+        Password = other.Password;
+        IsBlocked = other.IsBlocked;
+        IsLimited = other.IsLimited;
+    }
 
-        public override bool Equals(object? obj) => Equals(obj as PersonDto);
+    [JsonProperty(Required = Required.Always)]
+    public string Login { get; set; }
 
-        public override int GetHashCode() => Login.GetHashCode();
+    [JsonProperty(Required = Required.Always)]
+    public string Password { get; set; }
 
-        public bool Equals(PersonDto? other) => other != null && Login == other.Login;
+    [JsonProperty(Required = Required.Always)]
+    public bool IsBlocked { get; set; }
+
+    [JsonProperty(Required = Required.Always)]
+    public bool IsLimited { get; set; }
+
+    public bool IsAdmin()
+    {
+        return Login.Equals("ADMIN");
     }
 }

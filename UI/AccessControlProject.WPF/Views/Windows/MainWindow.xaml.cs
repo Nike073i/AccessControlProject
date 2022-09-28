@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.WPF.Views.Windows
+﻿namespace AccessControlProject.WPF.Views.Windows;
+
+public partial class MainWindow
 {
-    public partial class MainWindow
+    public MainWindow()
     {
-        public MainWindow() => InitializeComponent();
+        InitializeComponent();
     }
 }

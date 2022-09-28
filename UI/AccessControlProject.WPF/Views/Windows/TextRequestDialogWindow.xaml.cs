@@ -1,7 +1,9 @@
-﻿namespace AccessControlProject.WPF.Views.Windows
+﻿namespace AccessControlProject.WPF.Views.Windows;
+
+public partial class TextRequestDialogWindow
 {
-    public partial class TextRequestDialogWindow
+    public TextRequestDialogWindow()
     {
-        public TextRequestDialogWindow() => InitializeComponent();
+        InitializeComponent();
     }
 }

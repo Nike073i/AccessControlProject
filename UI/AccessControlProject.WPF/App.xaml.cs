@@ -1,44 +1,42 @@
-﻿using AccessControlProject.Domain.Di;
+﻿using System;
+using System.Windows;
+using AccessControlProject.Domain.Di;
 using AccessControlProject.WPF.Infrastructure.Di;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Windows;
 
-namespace AccessControlProject.WPF
+namespace AccessControlProject.WPF;
+
+public partial class App
 {
-    public partial class App
+    private static IHost? _host;
+    public static bool IsDesignMode { get; private set; } = true;
+
+    public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+
+    public static string CurrentDirectory => Environment.CurrentDirectory;
+
+    protected override async void OnStartup(StartupEventArgs e)
     {
-        public static bool IsDesignMode { get; private set; } = true;
+        IsDesignMode = false;
 
-        protected override async void OnStartup(StartupEventArgs e)
-        {
-            IsDesignMode = false;
+        var host = Host;
 
-            var host = Host;
+        base.OnStartup(e);
+        await host.StartAsync();
+    }
 
-            base.OnStartup(e);
-            await host.StartAsync();
-        }
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        using var host = Host;
+        base.OnExit(e);
+        await host.StopAsync();
+    }
 
-        protected override async void OnExit(ExitEventArgs e)
-        {
-            using var host = Host;
-            base.OnExit(e);
-            await host.StopAsync();
-        }
-
-        private static IHost? _host;
-
-        public static IHost Host => _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
-
-        public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
-        {
-            services.RegisterDomainService();
-            services.RegisterUiServices();
-            services.RegisterViewModels();
-        }
-
-        public static string CurrentDirectory => Environment.CurrentDirectory;
+    public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
+    {
+        services.RegisterDomainService();
+        services.RegisterUiServices();
+        services.RegisterViewModels();
     }
 }

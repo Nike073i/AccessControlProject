@@ -1,143 +1,149 @@
 ﻿<UserControl x:Class="AccessControlProject.WPF.Views.UserManagementView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:fa="http://schemas.fontawesome.com/icons/"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"    
              xmlns:vm="clr-namespace:AccessControlProject.WPF.ViewModels"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:UserManagementViewModel}"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <TabControl SelectedIndex="0" TabStripPlacement="Left">
         <TabItem Header="Общий вид">
             <TabItem.LayoutTransform>
-                <RotateTransform Angle="-90"></RotateTransform>
+                <RotateTransform Angle="-90" />
             </TabItem.LayoutTransform>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" MinWidth="200"/>
-                    <ColumnDefinition MinWidth="200"/>
+                    <ColumnDefinition Width="200" MinWidth="200" />
+                    <ColumnDefinition MinWidth="200" />
                 </Grid.ColumnDefinitions>
                 <GroupBox Grid.Column="0" Header="Пользователи" Margin="3">
                     <DockPanel>
                         <Grid DockPanel.Dock="Bottom" Margin="3">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="0" Grid.Row="0" fa:Awesome.Content="Solid_Plus" Foreground="Green"  Margin="3" Command="{Binding AddPersonCommand}"/>
-                            <Button Grid.Column="1" Grid.Row="0" fa:Awesome.Content="Solid_Ban" Foreground="Red" Margin="3" Command="{Binding BlockPersonCommand}" CommandParameter="{Binding SelectedPerson}"/>
-                            <Button Grid.Column="0" Grid.Row="1" fa:Awesome.Content="Solid_ShieldAlt" Foreground="DarkBlue" Margin="3" Command="{Binding RestrictPersonCommand}" CommandParameter="{Binding SelectedPerson}"/>
-                            <Button Grid.Column="1" Grid.Row="1" fa:Awesome.Content="Solid_Retweet" Foreground="Yellow"  Margin="3" Command="{Binding LoadPersonsCommand}"/>
+                            <Button Grid.Column="0" Grid.Row="0" fa:Awesome.Content="Solid_Plus" Foreground="Green"
+                                    Margin="3" Command="{Binding AddPersonCommand}" />
+                            <Button Grid.Column="1" Grid.Row="0" fa:Awesome.Content="Solid_Ban" Foreground="Red"
+                                    Margin="3" Command="{Binding BlockPersonCommand}"
+                                    CommandParameter="{Binding SelectedPerson}" />
+                            <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" fa:Awesome.Content="Solid_ShieldAlt"
+                                    Foreground="DarkBlue" Margin="3" Command="{Binding RestrictPersonCommand}"
+                                    CommandParameter="{Binding SelectedPerson}" />
                         </Grid>
-                        <ListBox ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}">
-
-                        </ListBox>
+                        <ListBox ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}" 
+                                 SelectedIndex="{Binding SelectedIndex}"/>
                     </DockPanel>
                 </GroupBox>
                 <GroupBox Grid.Column="1" Margin="6 3 3 6" Header="Информация">
                     <Grid Margin="3" DataContext="{Binding SelectedPerson}">
                         <Grid.Resources>
-                            <Style TargetType="TextBlock" BasedOn="{StaticResource GridInfoTextBlocks}"/>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource GridInfoTextBlocks}" />
                         </Grid.Resources>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Блокировка:"/>
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Ограничения:"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:" />
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Блокировка:" />
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Ограничения:" />
 
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Login}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Login}" />
                         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding IsBlocked}" />
-                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IsLimited}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IsLimited}" />
                     </Grid>
                 </GroupBox>
-                <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="3" Background="LightGray" Margin="0 3"/>
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="3" Background="LightGray" Margin="0 3" />
             </Grid>
         </TabItem>
         <TabItem Header="Одиночный">
             <TabItem.LayoutTransform>
-                <RotateTransform Angle="-90"></RotateTransform>
+                <RotateTransform Angle="-90" />
             </TabItem.LayoutTransform>
             <DockPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
                     <Button Margin="3" Command="{Binding AddPersonCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="Solid_Plus" Foreground="Green" Margin="5"/>
-                            <TextBlock Text="Создать" VerticalAlignment="Center" Margin="5"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Margin="3" Command="{Binding LoadPersonsCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Обновить список" VerticalAlignment="Center" Margin="5"/>
-                            <fa:ImageAwesome Icon="Solid_Retweet" Foreground="Yellow" Margin="5"/>
+                            <fa:ImageAwesome Icon="Solid_Plus" Foreground="Green" Margin="5" />
+                            <TextBlock Text="Создать" VerticalAlignment="Center" Margin="5" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
                     <Button Margin="3" Command="{Binding SetPrevPersonCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="Solid_Backward" Foreground="White" Margin="5"/>
-                            <TextBlock Text="Предыдущий" VerticalAlignment="Center" Margin="5"/>
+                            <fa:ImageAwesome Icon="Solid_Backward" Foreground="White" Margin="5" />
+                            <TextBlock Text="Предыдущий" VerticalAlignment="Center" Margin="5" />
                         </StackPanel>
                     </Button>
                     <Button Margin="3" Command="{Binding SetNextPersonCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Следующий" VerticalAlignment="Center" Margin="5"/>
-                            <fa:ImageAwesome Icon="Solid_Forward" Foreground="White" Margin="5"/>
+                            <TextBlock Text="Следующий" VerticalAlignment="Center" Margin="5" />
+                            <fa:ImageAwesome Icon="Solid_Forward" Foreground="White" Margin="5" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <GroupBox Header="Текущий пользователь" MinWidth="250" >
+                    <GroupBox Header="Текущий пользователь" MinWidth="250">
                         <Grid Margin="3" DataContext="{Binding SelectedPerson}">
-                                <Grid.Resources>
-                                    <Style TargetType="TextBlock" BasedOn="{StaticResource GridInfoTextBlocks}"/>
-                                </Grid.Resources>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:"/>
-                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Блокировка:"/>
-                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Ограничения:"/>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource GridInfoTextBlocks}" />
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Логин:" />
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Блокировка:" />
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Ограничения:" />
 
-                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Login}"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding IsBlocked}" />
-                                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IsLimited}"/>
-                            </Grid>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Login}" />
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding IsBlocked}" />
+                            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding IsLimited}" />
+                        </Grid>
                     </GroupBox>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button Margin="3" Grid.Column="0" Command="{Binding BlockPersonCommand}" CommandParameter="{Binding SelectedPerson}">
+                        <Button Margin="3" Grid.Column="0" Command="{Binding BlockPersonCommand}"
+                                CommandParameter="{Binding SelectedPerson}">
                             <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Solid_Ban" Foreground="Red" Margin="5"/>
-                                <TextBlock Text="Блокировка" VerticalAlignment="Center" Margin="5"/>
+                                <fa:ImageAwesome Icon="Solid_Ban" Foreground="Red" Margin="5" />
+                                <TextBlock Text="Блокировка" VerticalAlignment="Center" Margin="5" />
                             </StackPanel>
                         </Button>
-                        <Button Margin="3" Grid.Column="1" Command="{Binding RestrictPersonCommand}" CommandParameter="{Binding SelectedPerson}">
+                        <Button Margin="3" Grid.Column="1" Command="{Binding RestrictPersonCommand}"
+                                CommandParameter="{Binding SelectedPerson}">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Ограничение" VerticalAlignment="Center" Margin="5"/>
-                                <fa:ImageAwesome Icon="Solid_ShieldAlt" Foreground="DarkBlue" Margin="5"/>
+                                <TextBlock Text="Ограничение" VerticalAlignment="Center" Margin="5" />
+                                <fa:ImageAwesome Icon="Solid_ShieldAlt" Foreground="DarkBlue" Margin="5" />
                             </StackPanel>
                         </Button>
                     </Grid>
