@@ -1,8 +1,8 @@
 ﻿namespace AccessControlProject.WPF.Views.Windows;
 
-public partial class MainWindow
+public partial class ChangePasswordWindow
 {
-    public MainWindow()
+    public ChangePasswordWindow()
     {
         InitializeComponent();
     }

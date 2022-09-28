@@ -1,29 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-      <OutputType>WinExe</OutputType>
-      <TargetFramework>net6.0-windows</TargetFramework>
-      <Nullable>enable</Nullable>
-      <UseWPF>true</UseWPF>
-	  <StartupObject>AccessControlProject.WPF.Program</StartupObject>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <StartupObject>AccessControlProject.WPF.Program</StartupObject>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="FontAwesome5" Version="2.1.11" />
-		<PackageReference Include="MaterialDesignColors" Version="2.0.6" />
-		<PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
-		<PackageReference Include="MathCore.WPF" Version="0.0.36" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FontAwesome5" Version="2.1.6" />
+        <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
+        <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+        <PackageReference Include="MathCore.WPF" Version="0.0.25" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\AccessControlProject.Domain\AccesControlProject.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Common\AccessControlProject.Domain\AccessControlProject.Domain.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Infrastructure\Di\" />
-    <Folder Include="Infrastructure\Resources\Templates\" />
-    <Folder Include="ViewModels\WindowViewModels\" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>
